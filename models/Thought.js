@@ -1,18 +1,21 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, Types} = require('mongoose');
+const dateFormat = require("../utils/dateFormat")
 
-const ThoughtSchema = new Schema(
+const ReactionSchema = new Schema (
     {
-        thoughtTest: {
-            type: String,
-            required: true,
-            //must be between 1 and 280 characters
+        reactionId: {
+           //use mongoose objectid data type
+           //default value is set to an new object
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()        
         }
     },
     {
-        createdAt: {
-            //Date
-            //set default timestamp
-            //Getter method to timestamp on query
+        reactionBody: {
+            type: String,
+            require: true,
+            // 280 characters max
+            max: 280
         }
     },
     {
@@ -22,14 +25,58 @@ const ThoughtSchema = new Schema(
         }
     },
     {
-        reactions: {
-            //array of sub documents with the reaction schema
+        createdAt: {
+            //Date
+            //set default timestamp
+            //Getter method to timestamp on query
+            type: String,
+            default: Date.now,
+            get: createdAtVal => dateFormat(createdAtVal)
         }
+    },
+    {
+        toJSON: {
+            getters: true
+        },
+        id: false
     }
+
+)
+
+const ThoughtSchema = new Schema(
+    {
+        thoughtTest: {
+            type: String,
+            required: true,
+            //must be between 1 and 280 characters
+            len: [1, 128]
+        }
+    },
+    {
+        createdAt: {
+            //Date
+            //set default timestamp
+            //Getter method to timestamp on query
+            type: Date,
+            default: Date.now,
+            get: createdAtVal => dateFormat(createdAtVal)
+        }
+    },
+    {
+        username: {
+            type: String,
+            require: true
+        },
+        reactions: [ReactionSchema]
+    },
+    {
+        toJSON: {
+            getters: true
+        },
+        id: false
+    }       
 );
 
-//schema settings
-//create a virtual called friendCount that returns the lenght of the users friend array
 
 //thought model
 const Thought = model('Thought', ThoughtSchema);
