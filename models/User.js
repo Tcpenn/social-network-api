@@ -8,8 +8,7 @@ const UserSchema = new Schema (
             required: true,
             trim: true
         },
-    },
-    {
+
         email: {
             type: String,
             unique: true,
@@ -22,21 +21,23 @@ const UserSchema = new Schema (
                 },
                 message: props => `${props.email} is not a valid email!`
             } 
-        }
-    },
-    {
-        thoughts: {
-            //array of _id values referencing thoughts model
-            type: Schema.Types.ObjectId,
-            ref: 'Thought'
         },
-    },
-    {
-        friends: {
-            //array of _id values referencing the User model(self reference)
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
+    
+        thoughts:[
+            {
+                //array of _id values referencing thoughts model
+                type: Schema.Types.ObjectId,
+                ref: 'Thought'
+            }
+        ],
+    
+        friends: [
+            {
+                //array of _id values referencing the User model(self reference)
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ]
     },
     {
         toJSON: {
