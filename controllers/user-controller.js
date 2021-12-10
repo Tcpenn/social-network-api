@@ -21,7 +21,7 @@ const userController = {
             .catch(err => {
                 console.log(err);
                 res.status(400).json(err);
-            })
+        })
     },
 
     // get one user by id
@@ -51,7 +51,7 @@ const userController = {
             .catch(err => {
                 console.log(err);
                 res.status(400).json(err);
-            })
+        })
     },
 
     // create a new user
@@ -76,7 +76,7 @@ const userController = {
 
                 res.json(dbUserData);
             })
-            .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err));
     },
 
     // delete a user
@@ -90,7 +90,7 @@ const userController = {
 
                 res.json(true);
             })
-            .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err));
     },
 
     // add friend
@@ -108,7 +108,7 @@ const userController = {
 
                 res.json(dbUserData);
             })
-            .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err));
     },
 
     // remove a friend
@@ -126,7 +126,7 @@ const userController = {
 
                 res.json(dbUserData);
             })
-            .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err));
     }
 }
 

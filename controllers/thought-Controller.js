@@ -25,7 +25,7 @@ const thoughtController = {
             .catch(err => {
                 console.log(err);
                 res.status(400).json(err);
-            })
+        })
     },
 
     // create thought
@@ -44,7 +44,7 @@ const thoughtController = {
                     return;
                 }
             })
-            .catch(err => res.json(err));
+        .catch(err => res.json(err));
     },
 
     // update thought
@@ -62,7 +62,7 @@ const thoughtController = {
 
                 res.json(dbThoughData);
             })
-            .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err));
     },
     
     // delete thought
@@ -76,7 +76,7 @@ const thoughtController = {
 
                 res.json(true);
             })
-            .catch(err => ers.status(400).json(err));
+        .catch(err => ers.status(400).json(err));
     },
 
     // create reaction
@@ -94,7 +94,7 @@ const thoughtController = {
 
                 res.json(dbThoughtData);
             })
-            .catch(err => res.json(err));
+        .catch(err => res.json(err));
     },
 
     // delete reaction

@@ -8,28 +8,25 @@ const ReactionSchema = new Schema (
            //default value is set to an new object
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId()        
-        }
-    },
-    {
+        },
+    
         reactionBody: {
             type: String,
             require: true,
             // 280 characters max
             max: 280
-        }
-    },
-    {
+        },
+
         username: {
             type: String,
             require: true
-        }
-    },
-    {
+        },
+
         createdAt: {
             //Date
             //set default timestamp
             //Getter method to timestamp on query
-            type: String,
+            type: Date,
             default: Date.now,
             get: createdAtVal => dateFormat(createdAtVal)
         }
@@ -45,14 +42,13 @@ const ReactionSchema = new Schema (
 
 const ThoughtSchema = new Schema(
     {
-        thoughtTest: {
+        thoughtText: {
             type: String,
             required: true,
             //must be between 1 and 280 characters
             len: [1, 128]
-        }
-    },
-    {
+        },
+
         createdAt: {
             //Date
             //set default timestamp
@@ -60,9 +56,8 @@ const ThoughtSchema = new Schema(
             type: Date,
             default: Date.now,
             get: createdAtVal => dateFormat(createdAtVal)
-        }
-    },
-    {
+        },
+    
         username: {
             type: String,
             require: true
