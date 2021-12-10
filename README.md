@@ -10,7 +10,7 @@ This program is the basic backend of a social network api using mongoDB. The pro
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Technology and Dependencies](#technologi-and-dependencies)
+* [Technology and Dependencies](#technology-and-dependencies)
 * [License](#license)
 * [Roadmap](#roadmap)
 
